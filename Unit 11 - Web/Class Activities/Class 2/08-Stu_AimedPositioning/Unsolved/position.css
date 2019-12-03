@@ -1,0 +1,30 @@
+.box {
+    position:fixed;
+    margin:0;
+    background: #2db34a;
+    border: 2px solid black;
+}
+.box-1 {
+    top:50%;
+    left:50%;
+}
+
+.box-2 {
+    left: 50%;
+
+}
+
+.box-3 {
+    top:0;
+    left:0;
+}
+
+.box-4 {
+    bottom:0;
+    right:0;
+}
+
+.box-5 {
+    top:50%;
+    left:0
+}

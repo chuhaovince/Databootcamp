@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Home Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="static/css/style.css"
+</head>
+
+<body>
+    <h3> Welcome! </h3>
+    <a href="/api/v2/data"> <strong> {{ variable }} </strong></a>
+
+    <div class="container">
+        <div class="jumbotron text-center"> 
+            {{ text }}
+        </div>
+    </div>
+
+    <ul>
+        {% for name in list %}
+        <li> {{name}} </li>
+        {% endfor %}
+    </ul>
+
+    <ul>
+        <li>{{ dict.code }}</li>
+    </ul>
+</body>
+
+</html>

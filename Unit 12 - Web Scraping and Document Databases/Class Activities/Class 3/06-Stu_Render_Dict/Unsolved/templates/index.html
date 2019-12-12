@@ -16,8 +16,9 @@
       <ul style="list-style: none;">
 
         <!-- Loop through the dictionary -->
-
-
+        {%for item in list%}
+        <li>{{item.name}},{{item.type}}</li>
+        {%endfor%}
       </ul>
     </div>
   </div>

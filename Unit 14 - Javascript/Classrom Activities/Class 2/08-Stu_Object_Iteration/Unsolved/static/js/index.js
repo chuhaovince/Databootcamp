@@ -14,3 +14,8 @@ var recipes = [
 console.log(recipes);
 
 // @TODO: YOUR CODE HERE
+var dishes = recipes.map(item => item.dish);
+var spices = recipes.map(item => item.spice);
+console.log(dishes)
+
+console.log(spices)

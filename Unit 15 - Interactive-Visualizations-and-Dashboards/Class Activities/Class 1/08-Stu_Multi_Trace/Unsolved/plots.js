@@ -1,7 +1,4 @@
 console.log(data);
-// YOUR CODE HERE
-
-
 
 
 var trace1 = {

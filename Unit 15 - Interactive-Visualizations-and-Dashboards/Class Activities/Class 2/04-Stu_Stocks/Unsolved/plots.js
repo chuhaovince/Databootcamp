@@ -1,4 +1,4 @@
-var apiKey = "YOUR KEY HERE";
+var apiKey = "xwFaKJefSgzpK45o_Eo6";
 
 /* global Plotly */
 var url =
@@ -27,6 +27,23 @@ function unpack(rows, index) {
  */
 function buildPlot() {
   // @TODO: YOUR CODE HERE
+  d3.json(url).then(function(data) {
+    var trace = {
+      x : unpack(data.dataset.data, 0),
+      y : unpack(data.dataset.data, 4),
+      type : "scatter",
+      name : data.dataset.name
+    };
+    var plot = [trace];
+    var layout = {
+      title : `stock price of ${data.dataset.dataset_code}`,
+      xaxis : {
+        title : "Date",
+        type : "date"
+      }
+    };
+    Plotly.newPlot("plot",plot,layout);
+  })
 }
 
 buildPlot();

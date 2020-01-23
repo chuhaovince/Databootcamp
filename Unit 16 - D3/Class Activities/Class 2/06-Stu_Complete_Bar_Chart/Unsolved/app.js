@@ -26,6 +26,33 @@ var chartGroup = svg.append("g")
 
 // Load data from hours-of-tv-watched.csv
 // YOUR CODE HERE
+d3.csv("hours-of-tv-watched.csv").then(function(data){
+  var names = data.map(d => d.names);
+  aa = data.forEach(function(d) {
+    d.hours = +d.hours;
+  });
+  var hours = data.map(d => d.hours);
+  var space = 20;
+  var xScaler = d3.scaleBand().domain(names).range([0, chartWidth]);
+  var yScaler = d3.scaleLinear().domain(d3.extent(hours)).range([chartHeight-space, 0]);
+  var yAxis = d3.axisLeft(yScaler)
+  var xAxis = d3.axisBottom(xScaler)
+  chartGroup.append("g")
+    .attr("transform", `translate(0,${chartHeight})`)
+    .call(xAxis);
+  chartGroup.append("g")
+    .call(yAxis);
+
+  chartGroup.selectAll(".bar")
+  .data(hours)
+  .enter()
+  .append("rect")
+  .classed(".bar", true)
+  .attr("x", (d, i) => xScaler(names[i]))
+  .attr("y", d => yScaler(d))
+  .attr("height", d => chartHeight - yScaler(d))
+  .attr("width", xScaler.bandwidth() - space)
+})
 
   // Cast the hours value to a number for each piece of tvData
 

@@ -34,7 +34,7 @@ d3.csv("hours-of-tv-watched.csv").then(function(tvData) {
 
   // Cast the hours value to a number for each piece of tvData
   tvData.forEach(function(data) {
-    data.hours = +data.hours;
+    data.hours = +data.hours; // parse int
   });
 
   var barSpacing = 10; // desired space between each bar
@@ -45,6 +45,15 @@ d3.csv("hours-of-tv-watched.csv").then(function(tvData) {
 
    // @TODO
   // Create code to build the bar chart using the tvData.
+  chartGroup.selectAll(".bar")
+    .data(tvData)
+    .enter()
+    .append("rect") 
+    //.classed(".bar", true)
+    .attr("width", barWidth)
+    .attr("height", show => show.hours * scaleY)
+    .attr("x", (show, index) => index*(barSpacing + barWidth))
+    .attr("y", show => chartHeight - scaleY * show.hours)
 
 }).catch(function(error) {
   console.log(error);

@@ -21,7 +21,16 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '') or "s
 # app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', '')
 db = SQLAlchemy(app)
 
-from .models import Pet
+class Pet(db.Model):
+    __tablename__ = 'pets'
+
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64))
+    lat = db.Column(db.Float)
+    lon = db.Column(db.Float)
+
+    def __repr__(self):
+        return '<Pet %r>' % (self.name)
 
 
 # create route that renders index.html template
@@ -69,8 +78,9 @@ def pals():
             },
         }
     }]
-
-    return jsonify(pet_data)
+    pet_data = jsonify(pet_data)
+    print(type(pet_data))
+    return pet_data
 
 
 if __name__ == "__main__":
